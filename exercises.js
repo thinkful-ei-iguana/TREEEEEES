@@ -35,9 +35,6 @@ BSTL.insert('N', 'N');
 // Q5
 function findHeight(tree) {
   if (tree === null) return 0;
-  if (tree.left === null && tree.right === null) {
-    return 1;
-  }
 
   const leftHeight = findHeight(tree.left) + 1;
   const rightHeight = findHeight(tree.right) + 1;
@@ -109,3 +106,25 @@ function isBalanced(tree) {
 console.log(isBalanced(newBST));
 
 //Q9
+function isSameTree(arr1, arr2) {
+  const start = arr1[0];
+  if (start !== arr2[0]) return false;
+  if (!arr1.length || !arr2.length) {
+    return true;
+  }
+
+  const leftArr1 = arr1.filter(x => x < start);
+  const leftArr2 = arr2.filter(x => x < start);
+  const rightArr1 = arr1.filter(x => x > start);
+  const rightArr2 = arr2.filter(x => x > start);
+
+  const left = isSameTree(leftArr1, leftArr2);
+  const right = isSameTree(rightArr1, rightArr2);
+  if (left && right) {
+    return true;
+  } else {
+    return false;
+  }
+}
+
+console.log(isSameTree([3, 6, 4, 5, 1, 0, 2], [3, 1, 5, 2, 4, 6, 0]));
