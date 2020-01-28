@@ -49,15 +49,15 @@ console.log(findHeight(BST));
 // Q6
 
 function searchTreeOrNot(tree) {
-  if(tree.left) {
-    if (tree.left.value > tree.value ) {
+  if (tree.left) {
+    if (tree.left.value > tree.value) {
       return false;
     }
     searchTreeOrNot(tree.left);
   }
 
-  if(tree.right){
-    if(tree.right.value < tree.value){
+  if (tree.right) {
+    if (tree.right.value < tree.value) {
       return false;
     }
     searchTreeOrNot(tree.right);
@@ -67,6 +67,7 @@ function searchTreeOrNot(tree) {
 }
 console.log(searchTreeOrNot(BST));
 
+//Q7
 function thirdLargest(tree) {
   let largestNode = tree;
   while (largestNode.right) {
@@ -85,3 +86,26 @@ function thirdLargest(tree) {
 }
 
 console.log(thirdLargest(BST));
+
+//Q8
+const newBST = new BinarySearchTree();
+newBST.insert(5, 5);
+newBST.insert(3, 3);
+newBST.insert(7, 7);
+newBST.insert(1, 1);
+newBST.insert(9, 9);
+
+function isBalanced(tree) {
+  if (tree === null) return 0;
+  if (tree.left === null && tree.right === null) {
+    return 1;
+  }
+
+  const leftHeight = findHeight(tree.left) + 1;
+  const rightHeight = findHeight(tree.right) + 1;
+  return Math.abs(leftHeight - rightHeight) <= 1;
+}
+
+console.log(isBalanced(newBST));
+
+//Q9
