@@ -32,7 +32,7 @@ BSTL.insert('N', 'N');
 // Adds up all the values in the tree
 // O(n)
 
-// Q3
+// Q5
 function findHeight(tree) {
   if (tree === null) return 0;
   if (tree.left === null && tree.right === null) {
@@ -45,3 +45,25 @@ function findHeight(tree) {
 }
 
 console.log(findHeight(BST));
+
+// Q6
+
+function searchTreeOrNot(tree) {
+  if(tree.left) {
+    if (tree.left.value > tree.value ) {
+      return false;
+    }
+    searchTreeOrNot(tree.left);
+  }
+
+  if(tree.right){
+    if(tree.right.value < tree.value){
+      return false;
+    }
+    searchTreeOrNot(tree.right);
+  }
+
+  return true;
+}
+
+console.log(searchTreeOrNot(BST));
