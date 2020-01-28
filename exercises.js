@@ -65,5 +65,23 @@ function searchTreeOrNot(tree) {
 
   return true;
 }
-
 console.log(searchTreeOrNot(BST));
+
+function thirdLargest(tree) {
+  let largestNode = tree;
+  while (largestNode.right) {
+    largestNode = largestNode.right;
+  }
+
+  let parent = largestNode.parent;
+
+  if (largestNode.left) {
+    return parent.value;
+  }
+  if (parent.left) {
+    return parent.left.value;
+  }
+  return parent.parent.value;
+}
+
+console.log(thirdLargest(BST));
